@@ -1,6 +1,13 @@
 server:
   port: 8761
-
+  
+logging:
+  pattern:
+    console: '%d{iso8061} |%-5level |[%thread] %c{1}-%L %m %n'
+    file: '%d{iso8061} |%-5level |[%thread] %c{1}-%L %m %n'
+  file:
+      name: logs/Eureka-Server.log
+      
 eureka:
   client:
     registerWithEureka: false
