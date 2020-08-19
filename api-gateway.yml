@@ -1,3 +1,10 @@
+
+info:
+  app:
+    name: Zuul Api Gateway
+    description: Api Gateway spring boot application
+    version: 0.0.1-SNAPSHOT
+
 server:
   port: 9090
 
