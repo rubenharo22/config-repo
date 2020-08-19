@@ -1,8 +1,14 @@
 server:
   port: 9090
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-    register-with-eureka: true
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+    routes:
+      sample-service: # Service to create as sample
+        path: /sample/** #path that will be intercepted
+        url: sample-service #which url the request will e mapped to
+        stripPrefix: false  #if zuul should replace the "/sample/" segment
+        sensitiveHeaders:
