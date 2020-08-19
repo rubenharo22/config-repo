@@ -17,3 +17,12 @@ zuul:
     echo-service:
       path: /echo/**
       url: http://localhost:8091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:info,health,metrics,db-versions
+  endpoint:
+    health:
+      show-details:always
