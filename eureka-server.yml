@@ -16,3 +16,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   server:
     waitTimeInMsWhenSyncEmpty: 0 
+    eviction-interval-timer-in-ms: 5000
