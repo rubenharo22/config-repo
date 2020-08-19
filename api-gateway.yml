@@ -9,11 +9,8 @@ logging:
       name: logs/Api-Gateway.log
       
 zuul:
-  ignoredServices: '*'
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
-    routes:
-      echo-service:
-        path: /echo/**
-        url: http://localhost:8091
+ ignoredServices: '*'
+  routes:
+    echo-service:
+      path: /echo/**
+      url: http://localhost:8091
