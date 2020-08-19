@@ -1,6 +1,13 @@
 server:
   port: 9090
-    
+  
+logging:
+  pattern:
+    console: '%d{iso8061} |%-5level |[%thread] %c{1}-%L %m %n'
+    file: '%d{iso8061} |%-5level |[%thread] %c{1}-%L %m %n'
+  file:
+      name: logs/Api-Gateway.log
+      
 zuul:
   ignoredServices: '*'
   host:
