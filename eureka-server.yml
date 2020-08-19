@@ -3,8 +3,6 @@ spring:
     active: dev
   devtools:
     add-properties: false
-  application:
-    name: eureka-server
     
 server:
   port: 8761
