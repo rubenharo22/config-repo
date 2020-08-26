@@ -9,8 +9,8 @@ logging:
       name: logs/Eureka-Server.log
       
 eureka:
-  instance:
-    environment: dev
+  datacenter: Main
+  environment: prod
   client:
     registerWithEureka: false
     fetchRegistry: false
