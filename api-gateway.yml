@@ -8,25 +8,18 @@ logging:
   file:
       name: logs/Api-Gateway.log
   
-#Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
+#Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId (doing so requires disabling Eureka support in Ribbon)
 zuul:
   routes:
-    common-backend:
-      path: /api/**
-      serviceId: common-backend
+    echo-service:
+      path: /echo/**
+      serviceId: echo-service #The name of the service to make the load balancing
       
 ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
   eureka:
     enabled: false
-common-backend:
+echo-service:
   ribbon:
-    listOfServers: http://localhost:8098,http://localhost:8099
-    
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info,health,metrics,db-versions
-  endpoint:
-    health:
-      show-details: always
+    listOfServers: http://localhost:8091,http://localhost:8092
+    # Above is the list of servers and ports where the different instances of the service is deployed, so Ribbon can use them for load balancing
+
