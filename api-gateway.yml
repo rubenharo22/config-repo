@@ -15,8 +15,8 @@ zuul:
   ignoredServices: '*'
   routes:
     echo-service:
-      path: /echo/**
-      url: http://localhost:8091
+      path: /valman/**
+      url: http://localhost:8099
 
 management:
   endpoints:
