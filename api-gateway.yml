@@ -12,7 +12,7 @@ logging:
 # These simple url-routes do not get executed as a HystrixCommand, nor do they load-balance multiple URLs with Ribbon
 # It just take all request to the path echo/ and fordward to the server localhost:8091
 zuul:
-  ignoredServices: '*'
+#  ignoredServices: '*'
   routes:
     common-backend:
       path: /**
