@@ -14,8 +14,8 @@ logging:
 zuul:
   ignoredServices: '*'
   routes:
-    echo-service:
-      path: /valman/**
+    common-backend:
+      path: *
       url: http://localhost:8099
 
 management:
