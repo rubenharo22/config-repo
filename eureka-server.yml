@@ -10,7 +10,7 @@ logging:
       
 eureka:
   instance:
-    environment: prod
+    environment: dev
   client:
     registerWithEureka: false
     fetchRegistry: false
