@@ -15,7 +15,7 @@ zuul:
   ignoredServices: '*'
   routes:
     common-backend:
-      path: *
+      path: /**
       url: http://localhost:8099
 
 management:
