@@ -8,16 +8,20 @@ logging:
   file:
       name: logs/Api-Gateway.log
   
-# Option 1: Routing via url:
-# These simple url-routes do not get executed as a HystrixCommand, nor do they load-balance multiple URLs with Ribbon
-# It just take all request to the path echo/ and fordward to the server localhost:8091
+#Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
-#  ignoredServices: '*'
   routes:
     common-backend:
       path: /**
-      url: http://localhost:8099
-
+      serviceId: common-backend
+      
+ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
+  eureka:
+    enabled: false
+common-backend:
+  ribbon:
+    listOfServers: http://localhost:8098,http://localhost:8099
+    
 management:
   endpoints:
     web:
