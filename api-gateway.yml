@@ -10,6 +10,8 @@ logging:
   
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
+  sensitiveHeaders:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   routes:
     echo-service:
       path: /echo/**
