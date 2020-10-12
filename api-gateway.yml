@@ -18,8 +18,8 @@ zuul:
       serviceId: common-backend
       
 ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
-  ReadTimeout: 60000
-  connection-timeout: 3000
+  #ReadTimeout: 60000
+  #connection-timeout: 3000
   eureka:
     enabled: false
 common-backend:
@@ -33,5 +33,5 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 20000
+            timeoutInMilliseconds: 30000
 
