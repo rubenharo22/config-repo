@@ -10,23 +10,31 @@ logging:
   
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
+   host:
+        connect-timeout-millis: 10000
+        socket-timeout-millis: 20000
   sensitiveHeaders:
   ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   routes:
-    echo-service:
-      path: /echo/**
-      serviceId: echo-service
     common-backend:
       path: /api/**
       serviceId: common-backend
       
 ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
+  ReadTimeout: 60000
+  connection-timeout: 3000
   eureka:
     enabled: false
-echo-service:
-  ribbon:
-    listOfServers: http://localhost:8091,http://localhost:8092
 common-backend:
   ribbon:
     listOfServers: http://localhost:8098,http://localhost:8099
+    
+# Increase the Hystrix timeout to 60s (globally)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
 
