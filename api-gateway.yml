@@ -10,28 +10,30 @@ logging:
   
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
-  sensitiveHeaders:
-  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   routes:
-    common-backend:
-      path: /api/**
-      serviceId: common-backend
-      
-ribbon: # Eureka interface with Ribbon must be disabled so Ribbon will use the list of servers indicated below
-  #ReadTimeout: 60000
-  #connection-timeout: 3000
-  eureka:
-    enabled: false
-common-backend:
-  ribbon:
-    listOfServers: http://localhost:8098,http://localhost:8099
-    
-# Increase the Hystrix timeout to 60s (globally)
+    common-backend: '/api/**'
+  retryable: true
+
 hystrix:
   command:
     common-backend:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 30000
+            timeoutInMilliseconds: 20000
+    circuitBreaker:
+      requestVolumeThreshold: 4
+      errorThresholdPercentage: 50
+
+common-backend:
+  ribbon:
+    ConnectTimeout: 1000
+    ReadTimeout: 2000
+    MaxTotalHttpConnections: 100
+    MaxConnectionsPerHost: 100
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 2
+    ServerListRefreshInterval: 2000
+    OkToRetryOnAllOperations: true
+    retryableStatusCodes: 500,404
 
