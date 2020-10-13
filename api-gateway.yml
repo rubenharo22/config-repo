@@ -10,6 +10,10 @@ logging:
   
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  ribbon:
+    eager-load:
+      enabled: true
   routes:
     common-backend: '/api/**'
   retryable: true
