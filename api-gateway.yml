@@ -11,6 +11,9 @@ logging:
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 #Option 2: Chapter 5 - Another method is specifying a service-route and configuring a Ribbon client for the serviceId
 zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
   ribbon:
     eager-load:
       enabled: true
