@@ -10,7 +10,6 @@ logging:
   
 zuul:
   routes:
-    echo:
       path: /api/**
       serviceId: common-backend
       stripPrefix: true
